@@ -1,0 +1,26 @@
+plugins {
+    id 'maven-publish'
+    id 'java'
+    id 'com.palantir.git-version' version '0.15.0'
+}
+
+group 'dev.kreutz.smssender.shared'
+version versionDetails().lastTag
+
+compileJava.options.encoding = 'UTF-8'
+
+project.sourceCompatibility = '11'
+project.targetCompatibility = '11'
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
